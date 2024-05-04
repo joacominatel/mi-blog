@@ -94,13 +94,16 @@ export default function CreateBlog() {
             onChange={(e) => setTitle(e.target.value)}
             className="p-2 bg-white rounded-md outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform hover:scale-105"
           />
+          {/* for imageURL, can upload an image  */}
           <input
-            type="text"
+            type="file"
             placeholder="Image URL"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             className="p-2 bg-white rounded-md outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform hover:scale-105"
-          />
+            >
+              
+            </input>
           <input
             type="text"
             placeholder="Short description"
