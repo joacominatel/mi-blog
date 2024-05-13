@@ -16,11 +16,11 @@ export default function AboutSection() {
       .get("/api/projects")
       .then((res) => {
         setFeaturedProjects(res.data);
-        console.log(res.data);
-
+        setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
+        setIsLoading(false);
       });
   })
 
