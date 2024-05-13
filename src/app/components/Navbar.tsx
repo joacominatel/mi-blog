@@ -22,15 +22,27 @@ export default function Navbar() {
 
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                             <button
-                            className="px-3 py-2 rounded-md text-sm font-medium"
-                            onClick={(() => handleScroll('home')) || (location.href = '/')}
+                            className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition duration-300 ease-in-out"
+                            onClick={
+                                // if user in path `/` then scroll to `Home` section, else redirect to `/`
+                                () => handleScroll(window.location.pathname === '/' ? 'home' : location.href = '/')
+                            }
                             >Home</button>
                             <button 
-                            className="px-3 py-2 rounded-md text-sm font-medium"
-                            onClick={() => handleScroll('about')}
+                            className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition duration-300 ease-in-out"
+                            onClick={
+                                // if user in path `/` then scroll to `About` section, else redirect to `/about`
+                                () => handleScroll(window.location.pathname === '/' ? 'about' : location.href = '/')
+                            }
                             >About</button>
-                            <Link href='/news' className="px-3 py-2 rounded-md text-sm font-medium">News</Link>
-                            <Link href='/blog' className="px-3 py-2 rounded-md text-sm font-medium">Blog</Link>
+                            <button
+                            className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 cursor-not-allowed"
+                            disabled
+                            >Blog</button>
+                            <button
+                            className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 cursor-not-allowed"
+                            disabled
+                            >News</button>
                         </div>
                     </div>
                 </div>

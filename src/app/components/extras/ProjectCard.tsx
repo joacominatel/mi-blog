@@ -1,5 +1,7 @@
+'use client';
 import ProjectCard from '../../interfaces/ProjectCard';
 import Image from 'next/image';
+import Skeleton from "react-loading-skeleton";
 
 export default function ProjectCardComponent({ project }: { project: ProjectCard }) {
     return (
@@ -16,9 +18,9 @@ export default function ProjectCardComponent({ project }: { project: ProjectCard
                         />
                 </div>
                 <div className="w-4/5 flex flex-col">
-                    <h3 className="text-xl font-bold">{project.title}</h3>
-                    <p className="text-sm">{project.description}</p>
-                    <p className="text-xs text-gray-400 justify-end">{project.date}</p>
+                    <h3 className="text-xl font-bold">{project.title || <Skeleton />}</h3>
+                    <p className="text-sm">{project.description || <Skeleton count={3} />}</p>
+                    <p className="text-xs text-gray-400 justify-end">{project.date || <Skeleton />}</p>
                 </div>
             </div>
         </div>

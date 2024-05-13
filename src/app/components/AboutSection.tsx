@@ -1,37 +1,28 @@
+'use client'; 
 import ProjectCardComponent from "./extras/ProjectCard";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import axios from "axios";
+import { useState } from "react";
+import ProjectCard from "../interfaces/ProjectCard";
 
 export default function AboutSection() {
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "Inventario de productos",
-      description:
-        "Aplicación web para gestionar el inventario de productos de una tienda",
-      date: "2021-10-10",
-      imageUrl: "/images/inventory-image.webp",
-      link: "/project/inventario-productos",
-    },
-    {
-      id: 2,
-      title: "Blog Backend",
-      description:
-        "Backend de un blog con autenticación de usuarios y CRUD de posts",
-      date: "2022-10-10",
-      imageUrl: "/images/backend-blog.png",
-      link: "/project/blog-backend",
-    },
-    {
-      id: 3,
-      title: "RaspyOS",
-      description: "Sistema operativo para Raspberry Pi con interfaz gráfica",
-      date: "2023-10-10",
-      imageUrl: "/images/rapy-os.png",
-      link: "/project/raspyos",
-    },
-  ];
+  const [featuredProjects, setFeaturedProjects] = useState([] as ProjectCard[]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useState(() => {
+    axios
+      .get("/api/projects")
+      .then((res) => {
+        setFeaturedProjects(res.data);
+        console.log(res.data);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  })
 
   return (
     <section
@@ -76,7 +67,7 @@ export default function AboutSection() {
               <FontAwesomeIcon icon={faLinkedin} size="lg" />
             </a>
             <a
-              href="https://github.com/joacominatel"
+              href="https://github  .com/joacominatel"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-700"
@@ -87,9 +78,13 @@ export default function AboutSection() {
         </div>
 
         <div className="w-1/2 grid grid-cols-1 gap-6 p-8">
-          <h1 className="text-2xl font-bold">Proyectos destacados</h1>
+          {featuredProjects.length === 0 && <p>No hay proyectos para mostrar</p> }
+          {
+            featuredProjects.length > 0 &&
+            <h1 className="text-2xl font-bold">Proyectos destacados</h1>
+          }
           {featuredProjects.map((project) => (
-            <ProjectCardComponent key={project.id} project={project} />
+            <ProjectCardComponent key={project.id} project={project} /> 
           ))}
         </div>
       </div>
