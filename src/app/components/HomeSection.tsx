@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function HomeSection() {
     const mac_buttons = "/images/buttons-mac.png";
@@ -7,9 +6,9 @@ export default function HomeSection() {
     return (
         <section
         id="home"
-        className="relative h-screen flex items-center justify-center text-center bg-gray-900"
+        className="relative h-screen flex items-center justify-center text-center bg-transparent"
       >
-        <div className="relative z-10 px-48 py-28 font-mono bg-code-bg text-white rounded-b-2xl shadow-2xl">
+        <div className="relative z-10 px-48 py-28 font-mono text-white rounded-b-2xl shadow-2xl bg-opacity-90 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800">
           <div className="absolute top-0 left-0 w-24 h-24 flex items-center justify-center">
             <Image
               src={mac_buttons}

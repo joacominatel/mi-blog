@@ -26,7 +26,7 @@ export default function AboutSection() {
 
   return (
     <section
-      className="flex justify-center items-center h-screen bg-gray-800 text-white relative"
+      className="flex justify-center items-center h-screen bg-transparent text-white relative"
       id="about"
     >
       <div className="flex flex-row justify-between items-center w-full max-w-screen-2xl p-8 md:p-16 gap-20">
